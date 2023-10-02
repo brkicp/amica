@@ -407,12 +407,11 @@ const { data: psychologists } = useApi<SelectTable<"psychologist">[]>(
   "/psychologist?limit=3"
 );
 
-const { data: appointments, execute: refreshAppointments} = useApi<AppointmentWithPsychologist[]>(
-  "/appointments/my",
-  {
-    transform: (res) => res.sort((a, b) => b.id - a.id),
-  }
-);
+const { data: appointments, execute: refreshAppointments } = useApi<
+  AppointmentWithPsychologist[]
+>("/appointments/my", {
+  transform: (res) => res.sort((a, b) => b.id - a.id),
+});
 
 const numOfNewAppointments = computed(() => {
   return appointments.value?.filter((a) => !a.done).length;
@@ -520,7 +519,7 @@ const searchUrl = computed(() => {
     }
   });
 
-  return "/therapysts?" + url.toString();
+  return "/therapists?" + url.toString();
 });
 
 watch(filter, (query) => router.replace({ query }), {
