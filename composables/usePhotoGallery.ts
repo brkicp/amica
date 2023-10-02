@@ -34,7 +34,7 @@ export const usePhotoGallery = () => {
       quality: 20,
       allowEditing: true,
       presentationStyle: "fullscreen",
-      promptLabelHeader: "Take a photo",
+      promptLabelHeader: "Choose an option",
       saveToGallery: true,
       width: 720,
       height: 1280,

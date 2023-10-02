@@ -1,4 +1,6 @@
+// Documentation (Generate and download types)
 // https://supabase.com/dashboard/project/hlqqbpvskmybkuuerehh/api?page=tables-intro
+
 import { Database } from "./supabase";
 
 export type Tables = Database["public"]["Tables"];

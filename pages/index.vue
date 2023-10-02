@@ -333,7 +333,7 @@
             </div>
           </div>
           <ion-text>
-            <p>Apply filters & find your perfect psychologist.</p>
+            <p>Apply filters & find your perfect psychologist</p>
           </ion-text>
 
           <ion-button

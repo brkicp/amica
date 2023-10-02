@@ -14,8 +14,8 @@ export type LoginRequest = {
 };
 
 export default handle(
-  honoNonAuth.post("/auth/login", async (context) => {
-    const loginReq = await context.req.json<LoginRequest>();
+  honoNonAuth.post("/auth/login", async (c) => {
+    const loginReq = await c.req.json<LoginRequest>();
 
     const { data: user } = await supabase
       .from("users")
@@ -33,6 +33,6 @@ export default handle(
     const { sign } = useJwt();
     const token = await sign(user.id);
 
-    return context.json({ token });
+    return c.json({ token });
   })
 );
