@@ -1,0 +1,38 @@
+{
+  "name": "amica",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev -p 3001",
+    "generate": "nuxt generate",
+    "assets": "capacitor-assets generate --android",
+    "sync": "nuxt generate && capacitor-assets generate --android && npx cap sync",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.0",
+    "@capacitor/cli": "5.4.0",
+    "@ionic/cli-framework-output": "^2.2.6",
+    "@nuxt/devtools": "latest",
+    "@unocss/nuxt": "^0.55.7",
+    "@vue/cli-service": "5.0.8",
+    "nuxt": "^3.7.1",
+    "sass": "^1.66.1"
+  },
+  "dependencies": {
+    "@capacitor/android": "5.4.0",
+    "@capacitor/app": "5.0.6",
+    "@capacitor/camera": "^5.0.7",
+    "@capacitor/core": "5.4.0",
+    "@capacitor/dialog": "^5.0.6",
+    "@capacitor/filesystem": "^5.1.4",
+    "@capacitor/haptics": "5.0.6",
+    "@capacitor/keyboard": "5.0.6",
+    "@capacitor/preferences": "^5.0.6",
+    "@capacitor/status-bar": "5.0.6",
+    "@ionic/pwa-elements": "^3.2.2",
+    "@nuxtjs/ionic": "^0.12.1",
+    "swiper": "^10.2.0"
+  }
+}
