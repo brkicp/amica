@@ -87,7 +87,7 @@ export const useAlert = () => {
     alertController
       .create({
         animated: true,
-        header: "Invalid foramt",
+        header: "Invalid format",
         subHeader: "Birth date is in invalid format 😔",
         message: "Please insert a valid day, month and year.",
         buttons: [
