@@ -83,5 +83,24 @@ export const useAlert = () => {
       .then((alert) => alert.present());
   }
 
-  return { logoutAlert, passwordUpdate, deleteAppointmentAlert, scheduleAlert };
+  function validateAlert() {
+    alertController
+      .create({
+        animated: true,
+        header: "Invalid foramt",
+        subHeader: "Birth date is in invalid format 😔",
+        message: "Please insert a valid day, month and year.",
+        buttons: [
+          {
+            text: "OK",
+            handler: () => {
+              router;
+            },
+          },
+        ],
+      })
+      .then((alert) => alert.present());
+  }
+
+  return { logoutAlert, passwordUpdate, deleteAppointmentAlert, scheduleAlert, validateAlert };
 };

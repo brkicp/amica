@@ -9,7 +9,10 @@
         <ion-text>
           <h1 class="text-5xl font-700 mb-4 mt-0">Edit profile</h1>
         </ion-text>
-        <form @submit.prevent="updateUser()" class="flex flex-col gap-4">
+        <form
+          @submit.prevent="validateAndUpdateUser()"
+          class="flex flex-col gap-4"
+        >
           <div
             @click="takePhoto"
             class="h-60 w-full rounded-2xl overflow-hidden"
@@ -171,6 +174,29 @@ const router = useRouter();
 const userPhotoUrl = computed(() => {
   return photos.value?.base64String || currentUser?.value?.profilePhoto;
 });
+
+const { validateAlert } = useAlert();
+
+function isValidDate(day: number, month: number, year: number): boolean {
+  const currentYear = new Date().getFullYear();
+  const isInvalidDay = day < 1 || day > 31;
+  const isInvalidMonth = month < 1 || month > 12;
+  const isInvalidYear = year < 1900 || year > currentYear;
+
+  return !(isInvalidDay || isInvalidMonth || isInvalidYear);
+}
+
+function validateAndUpdateUser() {
+  const day = parseInt(form.day);
+  const month = parseInt(form.month);
+  const year = parseInt(form.year);
+
+  if (isValidDate(day, month, year)) {
+    updateUser();
+  } else {
+    validateAlert();
+  }
+}
 
 const { execute: updateUser, status } = useApi("/users/update", {
   method: "PUT",

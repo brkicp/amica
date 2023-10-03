@@ -1,7 +1,7 @@
 import { BASE_URL } from "~/hono-server/api/auth/constants";
 
 export const usePhotoUploader = () => {
-  // function to upload image
+  // Function to upload image
   const uploadImage = async (profilePhoto: string) => {
     const response = await $fetch("/users/update", {
       method: "PUT",

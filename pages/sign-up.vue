@@ -6,7 +6,7 @@
           <h1 class="text-5xl font-700 mb-4">Sign up</h1>
         </ion-text>
 
-        <form @submit.prevent="signUpRequest()" class="flex flex-col gap-4">
+        <form @submit.prevent="validateAndSignUp()" class="flex flex-col gap-4">
           <ion-input
             v-model="form.name"
             class="custom"
@@ -120,6 +120,8 @@
 </template>
 
 <script setup lang="ts">
+import signUp from "~/hono-server/api/auth/sign-up";
+
 const form = reactive({
   name: "",
   day: "",
@@ -131,6 +133,29 @@ const form = reactive({
 });
 
 const router = useRouter();
+
+const { validateAlert } = useAlert();
+
+function isValidDate(day: number, month: number, year: number): boolean {
+  const currentYear = new Date().getFullYear();
+  const isInvalidDay = day < 1 || day > 31;
+  const isInvalidMonth = month < 1 || month > 12;
+  const isInvalidYear = year < 1900 || year > currentYear;
+
+  return !(isInvalidDay || isInvalidMonth || isInvalidYear);
+}
+
+function validateAndSignUp() {
+  const day = parseInt(form.day);
+  const month = parseInt(form.month);
+  const year = parseInt(form.year);
+
+  if (isValidDate(day, month, year)) {
+    signUpRequest();
+  } else {
+    validateAlert();
+  }
+}
 
 const { execute: signUpRequest, status } = useApi("/auth/sign-up", {
   method: "POST",
